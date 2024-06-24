@@ -18,7 +18,11 @@ class PersonCounter extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(children: [
+    return Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+      Text(
+        'Split',
+        style: theme.textTheme.titleMedium,
+      ),
       IconButton(
         color: theme.colorScheme.primary,
         icon: const Icon(Icons.remove),
