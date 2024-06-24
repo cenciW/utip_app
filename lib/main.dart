@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:utip_app/widgets/person_counter.dart';
 
 void main() {
   runApp(const MyApp());
@@ -87,56 +88,42 @@ class _UTipState extends State<UTip> {
           ),
           //form
           Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Container(
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(5),
-                    border:
-                        Border.all(color: theme.colorScheme.primary, width: 2)),
-                child: Column(
-                  children: [
-                    TextField(
-                      decoration: const InputDecoration(
-                        border: OutlineInputBorder(),
-                        prefixIcon: Icon(Icons.attach_money),
-                        labelText: 'Bill Amount',
-                      ),
-                      keyboardType: TextInputType.number,
-                      onChanged: (String value) {
-                        print('valor: $value');
-                      },
-                    ),
-                    //Split Bill Area
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          'Split',
-                          style: theme.textTheme.titleMedium,
+              padding: const EdgeInsets.all(8.0),
+              child: Container(
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(5),
+                      border: Border.all(
+                          color: theme.colorScheme.primary, width: 2)),
+                  child: Column(
+                    children: [
+                      TextField(
+                        decoration: const InputDecoration(
+                          border: OutlineInputBorder(),
+                          prefixIcon: Icon(Icons.attach_money),
+                          labelText: 'Bill Amount',
                         ),
-                        Row(
-                          children: [
-                            IconButton(
-                              color: theme.colorScheme.primary,
-                              icon: const Icon(Icons.remove),
-                              onPressed: decrement,
-                            ),
-                            Text(
-                              "$_personCounter",
-                              style: theme.textTheme.titleMedium,
-                            ),
-                            IconButton(
-                              color: theme.colorScheme.primary,
-                              icon: const Icon(Icons.add),
-                              onPressed: increment,
-                            ),
-                          ],
-                        )
-                      ],
-                    )
-                  ],
-                )),
-          )
+                        keyboardType: TextInputType.number,
+                        onChanged: (String value) {
+                          print('valor: $value');
+                        },
+                      ),
+                      //Split Bill Area
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'Split',
+                            style: theme.textTheme.titleMedium,
+                          ),
+                          PersonCounter(
+                              theme: theme,
+                              personCounter: _personCounter,
+                              onDecrement: decrement,
+                              onIncrement: increment),
+                        ],
+                      )
+                    ],
+                  ))),
         ],
       ),
     );
